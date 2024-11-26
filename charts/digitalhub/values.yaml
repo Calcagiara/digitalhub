@@ -30,10 +30,13 @@ global:
     digitalhubPassword: &digitalhubPassword digitalhub
     kfpUser: &kfpUser kfp
     kfpPassword: &kfpPassword kfpwd123
+    argoUser: &argoUser argo
+    argoPassword: &argoPassword argo1234
     endpoint: &minioEndpoint "minio"
     endpointPort: &minioEndpointPort "9000"
     bucket: &minioBucket "datalake"
     kfpBucket: &kfpBucket "kfp"
+    argoBucket: &argoBucket "argo"
     protocol: &minioProtocol "http"
   solr:
     fullNameOverride: &solrFullNameOverride digitalhub
@@ -78,9 +81,9 @@ coder:
       - name: jupyter
         nodePort: "30040"
         iconUrl: https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/1200px-Jupyter_logo.svg.png
-        image: "ghcr.io/scc-digitalhub/jupyter-3-10:0.7.0"
-        image39: "ghcr.io/scc-digitalhub/jupyter-3-9:0.7.0"
-        image311: "ghcr.io/scc-digitalhub/jupyter-3-11:0.7.0"
+        image: "ghcr.io/scc-digitalhub/jupyter-3-10:0.8.0"
+        image39: "ghcr.io/scc-digitalhub/jupyter-3-9:0.8.0"
+        image311: "ghcr.io/scc-digitalhub/jupyter-3-11:0.8.0"
         privileged: false
       - name: dremio
         nodePort: "30120"
@@ -441,6 +444,9 @@ minio:
     - name: kfp
       policy: none
       purge: false
+    - name: argo
+      policy: none
+      purge: false
   resources:
     requests:
       memory: 0.5Gi
@@ -478,6 +484,9 @@ minio:
     - accessKey: *kfpUser
       secretKey: *kfpPassword
       policy: readwritekfp
+    - accessKey: *argoUser
+      secretKey: *argoPassword
+      policy: readwriteargo
   policies:
     - name: readwritedigitalhub
       statements:
@@ -493,6 +502,13 @@ minio:
             - 'arn:aws:s3:::kfp/*'
           actions:
             - "s3:*"
+    - name: readwriteargo
+      statements:
+        - effect: Allow
+          resources:
+            - 'arn:aws:s3:::argo/*'
+          actions:
+            - "s3:*"
 
 minio-operator:
   enabled: true
@@ -505,7 +521,7 @@ minio-operator:
     protocol: *minioProtocol
 
 kubeflow-pipelines:
-  enabled: true
+  enabled: false
   crd:
     create: *globalCrd
   priority_class:
@@ -549,3 +565,36 @@ kubeflow-pipelines:
     endpointPort: *minioEndpointPort
     bucket: *kfpBucket
     protocol: *minioProtocol
+
+argo-workflows:
+  singleNamespace: true
+  workflow:
+    serviceAccount:
+      create: true
+      name: argo-workflow
+  controller:
+    configMap:
+      create: true
+    serviceAccount:
+      name: argo-workflow-controller
+    workflowDefaults:
+      spec:
+        serviceAccountName: argo-workflow
+  server:
+    enabled: false
+  artifactRepository:
+    # -- Store artifact in a S3-compliant object store
+    # @default -- See [values.yaml]
+    s3:
+      # # Note the `key` attribute is not the actual secret, it's the PATH to
+      # # the contents in the associated secret, as defined by the `name` attribute.
+      accessKeySecret:
+        name: "{{ .Release.Name }}-minio-argo"
+        key: accesskey
+      secretKeySecret:
+        name: "{{ .Release.Name }}-minio-argo"
+        key: secretkey
+      # insecure will disable TLS. Primarily used for minio installs not configured with TLS
+      insecure: true
+      bucket: *argoBucket
+      endpoint: minio:9000
