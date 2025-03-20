@@ -240,6 +240,21 @@ entries:
   apigw-operator:
   - apiVersion: v2
     appVersion: 1.1.2
+    created: "2025-03-20T14:19:18.451365555Z"
+    description: A Helm chart for Kubernetes
+    digest: 6cfaad64ba3ad224747db378943bf17db5061fd3a30d791774c5cfec3da6bc44
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: apigw-operator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/apigw-operator-0.1.9/apigw-operator-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 1.1.2
     created: "2024-08-21T09:50:49.706973199Z"
     description: A Helm chart for Kubernetes
     digest: 119c35242afce332d23340a9f5bf8804bcb75c9f7f557d3ed15dae8cdc955d97
@@ -362,6 +377,21 @@ entries:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/coder-0.1.0/coder-0.1.0.tgz
     version: 0.1.0
   core:
+  - apiVersion: v2
+    appVersion: 0.10.0
+    created: "2025-03-20T14:19:18.573891231Z"
+    description: Core backend application for DigitalHub.
+    digest: 8c663d561e0462aea815802dd546116a1ed2f18b18310efaa00f061647a21326
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: core
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/core-0.3.6/core-0.3.6.tgz
+    version: 0.3.6
   - apiVersion: v2
     appVersion: 0.10.0-beta7
     created: "2025-03-18T17:13:53.441423962Z"
@@ -16841,6 +16871,21 @@ entries:
   dremio-rest-server-operator:
   - apiVersion: v2
     appVersion: 1.0.3
+    created: "2025-03-20T14:19:18.764717658Z"
+    description: A Helm chart for Kubernetes
+    digest: ec24b74e929bca3691cda06520bf57605bba7697171e3ad41fbced3568f1ce70
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: dremio-rest-server-operator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/dremio-rest-server-operator-0.1.6/dremio-rest-server-operator-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: 1.0.3
     created: "2024-08-21T09:50:50.042737719Z"
     description: A Helm chart for Kubernetes
     digest: 34f4a23dc5ad1eaca9ef0cce5e68c581460ff4888f1421f8362ffd5c708bb3da
@@ -16993,6 +17038,21 @@ entries:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/kubeflow-pipelines-0.1.0/kubeflow-pipelines-0.1.0.tgz
     version: 0.1.0
   kubernetes-resource-manager:
+  - apiVersion: v2
+    appVersion: 1.2.2
+    created: "2025-03-20T14:19:18.88429047Z"
+    description: A Helm chart for Kubernetes
+    digest: d9c771d80130df8a67d8f25113632646c6c62d86f1ff09a5d42acc3ef488bb3c
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: kubernetes-resource-manager
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/kubernetes-resource-manager-0.2.7/kubernetes-resource-manager-0.2.7.tgz
+    version: 0.2.7
   - apiVersion: v2
     appVersion: 1.2.2
     created: "2024-12-18T14:46:56.907407822Z"
@@ -17309,6 +17369,22 @@ entries:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/kubernetes-resource-manager-0.1.10/kubernetes-resource-manager-0.1.10.tgz
     version: 0.1.10
   minio-operator:
+  - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2025-03-20T14:19:19.009251702Z"
+    description: A Kubernetes operator to handle instances of buckets, users and policies
+      on MinIO.
+    digest: 20a45ba2be42e9408a59b96cad90c5b25cf570b5b5a931929fab0268e3c0cc2d
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: minio-operator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/minio-operator-0.1.6/minio-operator-0.1.6.tgz
+    version: 0.1.6
   - apiVersion: v2
     appVersion: 1.0.1
     created: "2024-10-07T15:37:11.392324325Z"
@@ -19226,6 +19302,21 @@ entries:
   postgrest-operator:
   - apiVersion: v2
     appVersion: 2.0.5
+    created: "2025-03-20T14:19:19.125716047Z"
+    description: A Helm chart for Kubernetes
+    digest: a95ac34214a27bc02365bcf6a9d23c23a94650269728184af786b7283282a82d
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: postgrest-operator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/postgrest-operator-0.1.8/postgrest-operator-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: 2.0.5
     created: "2024-08-21T09:50:50.448203595Z"
     description: A Helm chart for Kubernetes
     digest: ff7b1611e8f134b4e5a087ef3a36f76cb2323c873c0743f327934cd2eb6d80b7
@@ -19339,4 +19430,4 @@ entries:
     urls:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/postgrest-operator-0.1.0/postgrest-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2025-03-19T10:05:45.345289002Z"
+generated: "2025-03-20T14:19:19.126631607Z"
