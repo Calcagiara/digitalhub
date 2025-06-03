@@ -393,6 +393,21 @@ entries:
     version: 0.1.0
   core:
   - apiVersion: v2
+    appVersion: 0.11.0
+    created: "2025-06-03T08:44:50.287820042Z"
+    description: Core backend application for DigitalHub.
+    digest: a31818d36306fb721f41d41eaf10c0da381e94dfb5ddd30ed4b9daab038af708
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: core
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/core-0.3.11/core-0.3.11.tgz
+    version: 0.3.11
+  - apiVersion: v2
     appVersion: 0.11.0-beta5
     created: "2025-05-20T13:44:24.385423432Z"
     description: Core backend application for DigitalHub.
@@ -1717,6 +1732,98 @@ entries:
       data and services, built by integrating several open-source projects to manage,
       elaborate, expose and serve data through modern standards.
     digest: c10721690ae5e9f6337ecfdb56e121ee32c6ca95d5e088be7b78c8efb460827a
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: digitalhub
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/digitalhub-0.11.0-beta3/digitalhub-0.11.0-beta3.tgz
+    version: 0.11.0-beta3
+  - apiVersion: v2
+    appVersion: 0.11.0
+    created: "2025-06-03T08:44:50.533667866Z"
+    dependencies:
+    - condition: argo-workflows.enabled
+      name: argo-workflows
+      repository: https://argoproj.github.io/argo-helm
+      version: 0.45.1
+    - condition: apigw-operator.enabled
+      name: apigw-operator
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 0.1.8
+    - condition: coder.enabled
+      name: coder
+      repository: https://helm.coder.com/v2
+      version: 2.21.3
+    - condition: core.enabled
+      name: core
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 0.3.10
+    - condition: kubernetes-resource-manager.enabled
+      name: kubernetes-resource-manager
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 0.2.7
+    - condition: dremio-rest-server-operator.enabled
+      name: dremio-rest-server-operator
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 0.1.6
+    - condition: docker-registry.enabled
+      name: docker-registry
+      repository: https://helm.twun.io
+      version: 2.2.3
+    - condition: ext-postgres-operator.enabled
+      name: ext-postgres-operator
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 1.2.6
+    - condition: minio.enabled
+      name: minio
+      repository: https://charts.min.io/
+      version: 5.4.0
+    - condition: postgres-operator.enabled
+      name: postgres-operator
+      repository: https://opensource.zalando.com/postgres-operator/charts/postgres-operator
+      tags:
+      - operator
+      version: 1.11.0
+    - condition: postgrest-operator.enabled
+      name: postgrest-operator
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 0.1.8
+    - condition: template-controller.enabled
+      name: template-controller
+      repository: https://kluctl.github.io/charts
+      tags:
+      - operator
+      version: 0.2.5
+    - condition: solr-operator.enabled
+      name: solr-operator
+      repository: https://solr.apache.org/charts
+      tags:
+      - operator
+      version: 0.9.0
+    - condition: solr.enabled
+      name: solr
+      repository: https://solr.apache.org/charts
+      version: 0.9.0
+    - condition: minio-operator.enabled
+      name: minio-operator
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 0.1.6
+    - condition: kubeai.enabled
+      name: kubeai
+      repository: https://ffais.github.io/kubeai/
+      version: 0.21.3
+    - condition: open-webui.enabled
+      name: open-webui
+      repository: https://helm.openwebui.com/
+      version: 6.19.0
+    description: The Digital Hub is an open-source platform for interoperability of
+      data and services, built by integrating several open-source projects to manage,
+      elaborate, expose and serve data through modern standards.
+    digest: 484eac9e7aa8f0c29cbe0454f133482025b3c34d63b4fae20683210196225e74
     maintainers:
     - name: ffais
       url: https://github.com/ffais
@@ -17714,6 +17821,21 @@ entries:
     version: 0.1.0
   kubernetes-resource-manager:
   - apiVersion: v2
+    appVersion: 1.2.3
+    created: "2025-06-03T08:44:50.665815767Z"
+    description: A Helm chart for Kubernetes
+    digest: e2f0a09b3663d9d04291bf3ca8abc17f96df364deea952ce8ea10852af5468c6
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: kubernetes-resource-manager
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/kubernetes-resource-manager-0.2.8/kubernetes-resource-manager-0.2.8.tgz
+    version: 0.2.8
+  - apiVersion: v2
     appVersion: 1.2.2
     created: "2025-03-20T14:19:18.88429047Z"
     description: A Helm chart for Kubernetes
@@ -20105,4 +20227,4 @@ entries:
     urls:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/postgrest-operator-0.1.0/postgrest-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-29T12:06:49.865747966Z"
+generated: "2025-06-03T08:44:50.667868843Z"
