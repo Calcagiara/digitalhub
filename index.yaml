@@ -285,6 +285,24 @@ entries:
   apigw-operator:
   - apiVersion: v2
     appVersion: 1.1.2
+    created: "2025-10-21T15:21:04.054211395Z"
+    description: A Kubernetes operator to launch ingresses for services.
+    digest: e63f11f0dfddf0f9438961648ba83a9ec53a5b47bf423ba139dc3d97086f86e3
+    home: https://github.com/scc-digitalhub/digitalhub/tree/main/charts/apigw-operator
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: apigw-operator
+    sources:
+    - https://github.com/scc-digitalhub/apigw-operator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/apigw-operator-0.1.22/apigw-operator-0.1.22.tgz
+    version: 0.1.22
+  - apiVersion: v2
+    appVersion: 1.1.2
     created: "2025-07-16T08:34:33.207734143Z"
     description: A Kubernetes operator to launch ingresses for services.
     digest: 91796b995c63961ed0d4169a031a1e8ad87844d622866e23fe9953e7dd014f64
@@ -458,6 +476,25 @@ entries:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/coder-0.1.0/coder-0.1.0.tgz
     version: 0.1.0
   core:
+  - apiVersion: v2
+    appVersion: 0.14.0
+    created: "2025-10-21T15:21:04.234090512Z"
+    description: DigitalHub Core is part of the DigitalHub platform, and depends on
+      external components to support the complete set of functionalities.
+    digest: 77aa354b1b956fff1f8b4b2bbafe80c2a20b36199a9cc33ee9bcb223409b18b8
+    home: https://github.com/scc-digitalhub/digitalhub/tree/main/charts/core
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: core
+    sources:
+    - https://github.com/scc-digitalhub/digitalhub-core
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/core-0.3.34/core-0.3.34.tgz
+    version: 0.3.34
   - apiVersion: v2
     appVersion: 0.14.0
     created: "2025-10-09T12:24:56.395961885Z"
@@ -23985,4 +24022,4 @@ entries:
     urls:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/postgrest-operator-0.1.0/postgrest-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-09T12:24:56.396846313Z"
+generated: "2025-10-21T15:21:04.444020001Z"
