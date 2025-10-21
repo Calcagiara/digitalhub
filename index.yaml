@@ -21200,6 +21200,24 @@ entries:
   dremio-rest-server-operator:
   - apiVersion: v2
     appVersion: 1.0.3
+    created: "2025-10-21T15:50:27.966560966Z"
+    description: A Kubernetes operator to start instances of Dremio REST server.
+    digest: 3f89c4e406fa4be887316506880cafaf3b997cc84c78a9aabcd1d4c3d91728e9
+    home: https://github.com/scc-digitalhub/digitalhub/tree/main/charts/dremio-rest-server-operator
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: dremio-rest-server-operator
+    sources:
+    - https://github.com/scc-digitalhub/dremio-rest-server-operator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/dremio-rest-server-operator-0.1.9/dremio-rest-server-operator-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 1.0.3
     created: "2025-07-16T08:34:33.847382267Z"
     description: A Kubernetes operator to start instances of Dremio REST server.
     digest: 8b5df7088eb539473a25767617af75f2d66b86600455da6f4a8359239ba9f8ba
@@ -21322,6 +21340,20 @@ entries:
   ext-postgres-operator:
   - apiVersion: v2
     appVersion: 1.2.3
+    created: "2025-10-21T15:50:28.134974208Z"
+    description: 'A Helm chart for the External Postgres operator  helm repo add ext-postgres-operator
+      https://movetokube.github.io/postgres-operator/ helm upgrade --install -n operators
+      ext-postgres-operator  ext-postgres-operator/ext-postgres-operator --version
+      1.2.3 '
+    digest: 9bcc2c38e7ab37d7700918994f1eef9be13d17c691315ac14bab0af4ade4c9fb
+    home: https://github.com/scc-digitalhub/digitalhub/tree/main/charts/dremio-rest-server-operator
+    name: ext-postgres-operator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/ext-postgres-operator-1.2.8/ext-postgres-operator-1.2.8.tgz
+    version: 1.2.8
+  - apiVersion: v2
+    appVersion: 1.2.3
     created: "2025-06-30T08:01:25.528501262Z"
     description: 'A Helm chart for the External Postgres operator  helm repo add ext-postgres-operator
       https://movetokube.github.io/postgres-operator/ helm upgrade --install -n operators
@@ -21417,6 +21449,27 @@ entries:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/kubeflow-pipelines-0.1.0/kubeflow-pipelines-0.1.0.tgz
     version: 0.1.0
   kubernetes-resource-manager:
+  - apiVersion: v2
+    appVersion: 1.2.3
+    created: "2025-10-21T15:50:28.294762111Z"
+    description: A manager for resources in Kubernetes. The tool allows for monitoring
+      and managing some of the standard Kubernetes resources (PersistentVolumeClaim,
+      Services, Deployments, Jobs, and Secrets) as well as for managing a selection
+      of Custom Resources.
+    digest: 72192fe71fae93c0ae2d78d72c8ce11f88fbf22dcb95306823a21abcf803b31c
+    home: https://github.com/scc-digitalhub/digitalhub/tree/main/charts/kubernetes-resource-manager
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: kubernetes-resource-manager
+    sources:
+    - https://github.com/scc-digitalhub/dremio-rest-server-operator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/kubernetes-resource-manager-0.2.15/kubernetes-resource-manager-0.2.15.tgz
+    version: 0.2.15
   - apiVersion: v2
     appVersion: 1.2.3
     created: "2025-10-09T11:03:37.369387094Z"
@@ -21868,6 +21921,25 @@ entries:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/kubernetes-resource-manager-0.1.10/kubernetes-resource-manager-0.1.10.tgz
     version: 0.1.10
   minio-operator:
+  - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2025-10-21T15:50:28.501948723Z"
+    description: A Kubernetes operator to handle instances of buckets, users and policies
+      on MinIO.
+    digest: 11f210065424f7e093d6889a0dd547a20077ec769f5810bb08f6572c27ddbd36
+    home: https://github.com/scc-digitalhub/digitalhub/tree/main/charts/minio-operator
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: minio-operator
+    sources:
+    - https://github.com/scc-digitalhub/minio-operator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/minio-operator-0.1.10/minio-operator-0.1.10.tgz
+    version: 0.1.10
   - apiVersion: v2
     appVersion: 1.0.1
     created: "2025-07-16T08:34:34.372906578Z"
@@ -23858,6 +23930,24 @@ entries:
   postgrest-operator:
   - apiVersion: v2
     appVersion: 2.0.5
+    created: "2025-10-21T15:50:28.822200216Z"
+    description: A Kubernetes operator to start instances of PostgREST.
+    digest: 183025f9ad95a976e7ee280db2a4a700abe58a20dec3c90dcc9aab381ee44327
+    home: https://github.com/scc-digitalhub/digitalhub/tree/main/charts/postgrest-operator
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: postgrest-operator
+    sources:
+    - https://github.com/scc-digitalhub/postgrest-operator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/postgrest-operator-0.1.11/postgrest-operator-0.1.11.tgz
+    version: 0.1.11
+  - apiVersion: v2
+    appVersion: 2.0.5
     created: "2025-07-16T08:34:34.577367505Z"
     description: A Kubernetes operator to start instances of PostgREST.
     digest: e4c13bf72917e4ab9fbee513a07bc36acfbc7e7a6a8fc2b01961051e94955f05
@@ -24022,4 +24112,4 @@ entries:
     urls:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/postgrest-operator-0.1.0/postgrest-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-21T15:21:04.444020001Z"
+generated: "2025-10-21T15:50:28.823064948Z"
