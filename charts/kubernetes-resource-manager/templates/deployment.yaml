@@ -55,6 +55,7 @@ spec:
               port: http
           {{- if .Values.oidc.enabled }}
           env:
+            {{- if or .Values.oidc.audience.externalSecret.name .Values.oidc.audience.value  }}
             - name: KRM_AUTH_OAUTH2_AUDIENCE
               {{- if .Values.oidc.audience.externalSecret.name  }}
               valueFrom:
@@ -62,7 +63,17 @@ spec:
                   name: {{ .Values.oidc.audience.externalSecret.name }}
                   key: {{ .Values.oidc.audience.externalSecret.key }}
               {{- else }}
-              value: {{ .Values.oidc.audience.clientId }}
+              value: {{ .Values.oidc.audience.value }}
+              {{- end }}
+            {{- end }}
+            - name: KRM_AUTH_OAUTH2_CLIENT_ID
+              {{- if .Values.oidc.clientId.externalSecret.name  }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.oidc.clientId.externalSecret.name }}
+                  key: {{ .Values.oidc.clientId.externalSecret.key }}
+              {{- else }}
+              value: {{ .Values.oidc.clientId.value }}
               {{- end }}
           {{- end }}
           envFrom:
