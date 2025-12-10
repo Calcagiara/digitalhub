@@ -85,18 +85,28 @@ oidc:
   access:
     #  oidc.access.roles --
     roles: []
-  #  oidc.audience --
+    #  oidc.audience -- OIDC audience
   audience:
-    #  oidc.audience.clientId -- OIDC provider client ID
-    clientId: ""
-    #  oidc.audience.externalSecret -- Read client ID from existing secrets
+    #  oidc.audience.externalSecret -- Read audience value from existing secret, defaults to the client id if not set
     externalSecret:
       #  oidc.audience.externalSecret.key -- Existing secret key
       key: ""
       #  oidc.audience.externalSecret.name -- Existing secret name
       name: ""
+    #  oidc.audience.value -- Set the audience value, defaults to the client id if not set
+    value: ""
   #  oidc.authType --
   authType: ""
+  #  oidc.clientId -- OIDC clientId configuration
+  clientId:
+    #  oidc.clientId.externalSecret -- Read client id from existing secret
+    externalSecret:
+      #  oidc.clientId.externalSecret.key -- Existing secret key
+      key: ""
+      #  oidc.clientId.externalSecret.name -- Existing secret name
+      name: ""
+    #  oidc.clientId.value -- Set client id for the client
+    value: ""
   #  oidc.issuer -- OIDC issuer
   issuer: ""
   #  oidc.redirectUrl -- OIDC issuer

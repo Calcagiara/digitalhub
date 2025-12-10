@@ -12,8 +12,8 @@ maintainers:
     url: https://github.com/ffais
   - name: calcagiara
     url: https://github.com/Calcagiara
-version: "0.14.0"
-appVersion: "0.14.0"
+version: "0.14.1"
+appVersion: "0.14.1"
 dependencies:
 - name: argo-workflows
   version: "0.45.1"
@@ -28,11 +28,11 @@ dependencies:
   repository: https://helm.coder.com/v2
   condition: coder.enabled
 - name: core
-  version: "0.3.37"
+  version: "0.3.38"
   repository: https://scc-digitalhub.github.io/digitalhub/
   condition: core.enabled
 - name: kubernetes-resource-manager
-  version: "0.2.16"
+  version: "0.2.17"
   repository: https://scc-digitalhub.github.io/digitalhub/
   condition: kubernetes-resource-manager.enabled
 - name: dremio-rest-server-operator
@@ -41,7 +41,7 @@ dependencies:
   condition: dremio-rest-server-operator.enabled
 - name: docker-registry
   version: "2.3.0"
-  repository: "https://helm.twun.io"
+  repository: "https://twuni.github.io/docker-registry.helm"
   condition: docker-registry.enabled
 - name: ext-postgres-operator
   version: "1.2.8"
