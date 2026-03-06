@@ -327,7 +327,7 @@ coder:
     #  coder.coder.image --
     image:
       #  coder.coder.image.tag -- Coder image tag
-      tag: v2.26.1
+      tag: v2.30.2
     #  coder.coder.ingress -- Coder ingress configuration
     ingress:
       #  coder.coder.ingress.enable -- Enable/Disable Coder ingress
@@ -600,26 +600,30 @@ core:
   s3:
     # s3.enabled -- Enable this option if you have an S3 deployment that you want to use with Core
     enabled: true
-    #  core.s3.accessKey -- Explicit declaration of the Access key of your S3 instance.
-    #  It has lower priority than the corresponding secret values.
-    accessKey: *platformAccessKey
     #  core.s3.bucket -- Bucket of your S3 instance
     bucket: *platformBucket
-    #  core.s3.dynamicCreds --
-    dynamicCreds:
-      #  core.s3.dynamicCreds.enabled -- Set this to true if you want to use dynamic credentials for S3 communication
-      enabled: false
+    #  core.s3.credentials -- S3 credentials configuration
+    credentials:
+      #  core.s3.credentials.accessKey -- Explicit declaration of the Access key of your S3 instance.
+      #  It has lower priority than the corresponding secret values.
+      accessKey: *platformAccessKey
+      #  core.s3.credentials.existingSecret -- Reference to the secret containing AccessKey and Secret key of your S3 instance.
+      #  These values have higher priority than the explicit declarations.
+      existingSecret:
+        #  core.s3.credentials.existingSecret.accessKeyKey -- Key corresponding to your accessKey in your secret
+        accessKeyKey: *platformExistingAccesKey
+        #  core.s3.credentials.existingSecret.name -- Secret containing accessKey and secretKey of your s3 instance
+        name: *platformExistingSecret
+        #  core.s3.credentials.existingSecret.secretKeyKey -- Key corresponding to your secretKey in your secret
+        secretKeyKey: *platformExistingSecretKey
+      #  core.s3.credentials.policy -- Policy that the credentials for S3 operations will have.
+      #  It should be a JSON string in-line.
+      policy: ""
+      #  core.s3.credentials.secretKey -- Explicit declaration of the Secret key of your S3 instance.
+      #  It has lower priority than the corresponding secret values.
+      secretKey: *platformSecretKey
     #  core.s3.endpoint -- Endpoint of your S3 instance
     endpoint: *s3Endpoint
-    #  core.s3.existingSecret -- Reference to the secret containing AccessKey and Secret key of your S3 instance.
-    #  These values have higher priority than the explicit declarations.
-    existingSecret:
-      #  core.s3.existingSecret.accessKeyKey -- Key corresponding to your accessKey in your secret
-      accessKeyKey: *platformExistingAccesKey
-      #  core.s3.existingSecret.name -- Secret containing accessKey and secretKey of your s3 instance
-      name: *platformExistingSecret
-      #  core.s3.existingSecret.secretKeyKey -- Key corresponding to your secretKey in your secret
-      secretKeyKey: *platformExistingSecretKey
     #  core.s3.port -- Port of your S3 instance
     port: *s3EndpointPort
     #  core.s3.protocol -- Protocol of your S3 instance (http/https)
@@ -628,9 +632,6 @@ core:
     publicUrl: ""
     #  core.s3.region -- Region used by your S3 instance
     region: us-east-1
-    #  core.s3.secretKey -- Explicit declaration of the Secret key of your S3 instance.
-    #  It has lower priority than the corresponding secret values.
-    secretKey: *platformSecretKey
   #  core.service -- Service configurations.
   service:
     #  core.service.httpNodePort -- Service NodePort.
@@ -1190,6 +1191,17 @@ platformPackages:
   preRelease: false
   #  platformPackages.tag --
   tag: ""
+
+platformTests:
+  image: "ghcr.io/scc-digitalhub/digitalhub-tests"
+  scenarios:
+    - s0-crud
+    - s1-etl
+    - s2-dbt
+    - s3-scikit-learn
+    - s4-mlflow
+    - s6-container
+  tag: "0.15.12"
 
 #  postgres-operator -- Postgres operator configuration
 postgres-operator:

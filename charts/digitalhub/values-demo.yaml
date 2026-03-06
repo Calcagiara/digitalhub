@@ -475,7 +475,7 @@ core:
     #  core.additionalConfig.resources -- Resources for the pods created by Core
     resources:
       #  core.additionalConfig.resources.cpuLim -- CPU limit
-      cpuLim: ""
+      cpuLim: "2000m"
       #  core.additionalConfig.resources.cpuReq -- CPU request
       cpuReq: 100m
       #  core.additionalConfig.resources.gpuKey -- GPU key
@@ -483,7 +483,7 @@ core:
       #  core.additionalConfig.resources.memLim -- Memory limit
       memLim: ""
       #  core.additionalConfig.resources.memReq -- Memory request
-      memReq: 256Mi
+      memReq: 512Mi
       #  core.additionalConfig.resources.pvcLim -- PVC storage limit
       pvcLim: ""
       #  core.additionalConfig.resources.pvcReq -- PVC storage request
@@ -562,6 +562,8 @@ core:
     port: "80"
     #  core.kubeai.serviceName -- Kubei service name
     serviceName: kubeai
+  image:
+    tag: "0.15.0-beta12"
   #  core.lucene -- Values for Lucene configuration
   lucene:
     #  core.lucene.indexPath -- Set the path for Lucene and enables it
@@ -604,41 +606,71 @@ core:
     schema: public
   #  core.priorityClassName -- Name of the priority class to use for the core pods. If not set, no priority class will be used.
   priorityClassName: *highPriority
+  runtime:
+    #  runtime.dbt --
+    dbt:
+      #  runtime.dbt.image -- DBT wrapper repository
+      image: ghcr.io/scc-digitalhub/digitalhub-sdk-wrapper-dbt/wrapper-dbt
+      #  runtime.dbt.tag -- DBT wrapper tag
+      tag: latest
+    hera:
+      #  runtime.hera.image -- hera wrapper repository
+      image: ghcr.io/scc-digitalhub/digitalhub-sdk-wrapper-hera/wrapper-hera
+      #  runtime.hera.tag -- hera wrapper tag
+      tag: latest
+    #  runtime.huggingFace --
+    huggingFace:
+      #  runtime.huggingFace.image -- HuggingFaceServer repository
+      image: kserve/huggingfaceserver
+      #  runtime.huggingFace.tag -- HuggingFaceServer tag
+      tag: v0.14.0
+    #  runtime.python --
+    python:
+      #  runtime.python.image -- Python runtime repository
+      image: ghcr.io/scc-digitalhub/digitalhub-serverless/python-runtime
+      #  runtime.python.tag3_10 -- Python runtime 3.10  tag
+      tag3_10: 3.10-latest
+      #  runtime.python.tag3_11 -- Python runtime 3.11 tag
+      tag3_11: 3.11-latest
+      #  runtime.python.tag3_12 -- Python runtime 3.12 tag
+      tag3_12: 3.12-latest
+      tag3_13: 3.13-latest
   #  core.s3 --
   s3:
-    # s3.enabled -- Enable this option if you have an S3 deployment that you want to use with Core
+    #  core.s3.enabled -- Enable this option if you have an S3 deployment that you want to use with Core
     enabled: true
-    #  core.s3.accessKey -- Explicit declaration of the Access key of your S3 instance.
-    #  It has lower priority than the corresponding secret values.
-    accessKey: *platformAccessKey
     #  core.s3.bucket -- Bucket of your S3 instance
     bucket: *platformBucket
-    #  core.s3.dynamicCreds --
-    dynamicCreds:
-      #  core.s3.dynamicCreds.enabled -- Set this to true if you want to use dynamic credentials for S3 communication
-      enabled: false
+    #  core.s3.credentials -- S3 credentials configuration
+    credentials:
+      #  core.s3.credentials.accessKey -- Explicit declaration of the Access key of your S3 instance.
+      #  It has lower priority than the corresponding secret values.
+      accessKey: *platformAccessKey
+      #  core.s3.credentials.existingSecret -- Reference to the secret containing AccessKey and Secret key of your S3 instance.
+      #  These values have higher priority than the explicit declarations.
+      existingSecret:
+        #  core.s3.credentials.existingSecret.accessKeyKey -- Key corresponding to your accessKey in your secret
+        accessKeyKey: *platformExistingAccesKey
+        #  core.s3.credentials.existingSecret.name -- Secret containing accessKey and secretKey of your s3 instance
+        name: *platformExistingSecret
+        #  core.s3.credentials.existingSecret.secretKeyKey -- Key corresponding to your secretKey in your secret
+        secretKeyKey: *platformExistingSecretKey
+      #  core.s3.credentials.policy -- Policy that the credentials for S3 operations will have.
+      #  It should be a JSON string in-line.
+      policy: '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["s3:*"],"Resource":["arn:aws:s3:::datalake/*"]}]}'
+      #  core.s3.credentials.secretKey -- Explicit declaration of the Secret key of your S3 instance.
+      #  It has lower priority than the corresponding secret values.
+      secretKey: *platformSecretKey
     #  core.s3.endpoint -- Endpoint of your S3 instance
     endpoint: *s3Endpoint
-    #  core.s3.existingSecret -- Reference to the secret containing AccessKey and Secret key of your S3 instance.
-    #  These values have higher priority than the explicit declarations.
-    existingSecret:
-      #  core.s3.existingSecret.accessKeyKey -- Key corresponding to your accessKey in your secret
-      accessKeyKey: *platformExistingAccesKey
-      #  core.s3.existingSecret.name -- Secret containing accessKey and secretKey of your s3 instance
-      name: *platformExistingSecret
-      #  core.s3.existingSecret.secretKeyKey -- Key corresponding to your secretKey in your secret
-      secretKeyKey: *platformExistingSecretKey
     #  core.s3.port -- Port of your S3 instance
     port: *s3EndpointPort
     #  core.s3.protocol -- Protocol of your S3 instance (http/https)
     protocol: *s3Protocol
     #  core.s3.publicUrl -- Public url of your S3 instance
-    publicUrl: "http://seaweedfs-s3:8888"
+    publicUrl: "http://seaweedfs-s3:8333"
     #  core.s3.region -- Region used by your S3 instance
     region: us-east-1
-    #  core.s3.secretKey -- Explicit declaration of the Secret key of your S3 instance.
-    #  It has lower priority than the corresponding secret values.
-    secretKey: *platformSecretKey
   #  core.service -- Service configurations.
   service:
     #  core.service.port -- Service port.
@@ -1177,7 +1209,7 @@ platformPackages:
   #  For the most stable experience, these values should NOT be modified.
   packages:
     - name: digitalhub[full]
-      tag: "0.14.9"
+      tag: ""
     - name: digitalhub-runtime-container
       tag: ""
     - name: digitalhub-runtime-dbt
@@ -1195,7 +1227,7 @@ platformPackages:
   #  platformPackages.preRelease -- If set to true, the latest version of the packages will be used (even beta ones).
   #  WARNING:
   #  For the most stable experience, this value should NOT be modified.
-  preRelease: false
+  preRelease: true
   #  platformPackages.tag --
   tag: ""
 
