@@ -71,12 +71,18 @@ data:
 {{- end }}
   JWT_ACCESS_TOKEN_DURATION: {{ .Values.coreTokens.accessTokenDuration | quote }}
   JWT_REFRESH_TOKEN_DURATION: {{ .Values.coreTokens.refreshTokenDuration | quote }}
-  S3_CREDENTIALS_PROVIDER: {{ if and .Values.s3.enabled (not .Values.s3.dynamicCreds.enabled) }}"true"{{ else }}"false"{{ end }}
+  S3_CREDENTIALS_PROVIDER: {{ if .Values.s3.enabled }}"true"{{ else }}"false"{{ end }}
 {{- if .Values.s3.enabled }}
+  {{ if .Values.s3.credentials.policy}}S3_CREDENTIALS_POLICY: {{ .Values.s3.credentials.policy | quote }}{{ end }}
+  S3_SIGNATURE_VERSION: {{ .Values.s3.signatureVersion }}
+  S3_PATH_STYLE_ACCESS: {{ .Values.s3.pathStyleAccess | quote }}
+  {{ if .Values.s3.credentials.claimPrefix }}S3_CREDENTIALS_CLAIM_PREFIX: {{ .Values.s3.credentials.claimPrefix | quote }}{{ end }}
+  {{ if .Values.s3.credentials.roleArn }}S3_CREDENTIALS_ROLE_ARN: {{ .Values.s3.credentials.roleArn }}{{ end }}
   AWS_DEFAULT_REGION: {{ .Values.s3.region }}
   FILES_DEFAULT_STORE: s3://{{ .Values.s3.bucket }}
   S3_ENDPOINT_URL: {{ .Values.s3.publicUrl }}
   S3_BUCKET: {{ .Values.s3.bucket }}
+  S3_CREDENTIALS_DURATION: {{ .Values.s3.credentials.duration | quote }}
 {{- end }}
 {{- if .Values.templates }}
   K8S_TEMPLATES: {{ include "core.templates" . | quote }}
@@ -119,12 +125,6 @@ data:
   DB_CREDENTIALS_ENDPOINT:  http://{{ .Release.Name }}-core-sts:8080
   DB_CREDENTIALS_CLAIM: {{ .Values.sts.jwt.claim }}
   DB_CREDENTIALS_ROLE: {{ .Values.sts.credentials.roles }}
-  {{- end }}
-  MINIO_CREDENTIALS_PROVIDER: {{ if .Values.s3.dynamicCreds.enabled }}"true"{{ else }}"false"{{ end }}
-  {{- if .Values.s3.dynamicCreds.enabled }}
-  MINIO_CREDENTIALS_ENDPOINT: {{ .Values.s3.publicUrl }}
-  MINIO_CREDENTIALS_REGION: {{ .Values.s3.region }}
-  MINIO_CREDENTIALS_POLICY: {{ .Values.s3.dynamicCreds.policy | quote }}
   {{- end }}
 {{- end }}
   LUCENE_INDEX_PATH: {{ if .Values.solr.enabled }}"false"{{ else }}{{ .Values.lucene.indexPath | quote }}{{ end }}

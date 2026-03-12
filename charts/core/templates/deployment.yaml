@@ -70,43 +70,24 @@ spec:
               value: {{ .Values.sts.client.clientSecret }}
               {{- end }}
           {{- end }}
-          {{- if .Values.s3.dynamicCreds.enabled }}
-            - name: MINIO_CREDENTIALS_ACCESS_KEY
-            {{- if and .Values.s3.existingSecret.name .Values.s3.existingSecret.accessKeyKey }}
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.s3.existingSecret.name }}
-                  key: {{ .Values.s3.existingSecret.accessKeyKey }}
-            {{- else }}
-              value: {{ .Values.s3.accessKey }}
-            {{- end }}
-            - name: MINIO_CREDENTIALS_SECRET_KEY
-            {{- if and .Values.s3.existingSecret.name .Values.s3.existingSecret.secretKeyKey }}
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.s3.existingSecret.name }}
-                  key: {{ .Values.s3.existingSecret.secretKeyKey }}
-            {{- else }}
-              value: {{ .Values.s3.secretKey }}
-            {{- end }}
-          {{- else }}
+          {{- if .Values.s3.enabled }}
             - name: AWS_ACCESS_KEY
-            {{- if and .Values.s3.existingSecret.name .Values.s3.existingSecret.accessKeyKey }}
+            {{- if and .Values.s3.credentials.existingSecret.name .Values.s3.credentials.existingSecret.accessKeyKey }}
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.s3.existingSecret.name }}
-                  key: {{ .Values.s3.existingSecret.accessKeyKey }}
+                  name: {{ .Values.s3.credentials.existingSecret.name }}
+                  key: {{ .Values.s3.credentials.existingSecret.accessKeyKey }}
             {{- else }}
-              value: {{ .Values.s3.secretKey }}
+              value: {{ .Values.s3.credentials.secretKey }}
             {{- end }}
             - name: AWS_SECRET_KEY
-            {{- if and .Values.s3.existingSecret.name .Values.s3.existingSecret.secretKeyKey }}
+            {{- if and .Values.s3.credentials.existingSecret.name .Values.s3.credentials.existingSecret.secretKeyKey }}
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.s3.existingSecret.name }}
-                  key: {{ .Values.s3.existingSecret.secretKeyKey }}
+                  name: {{ .Values.s3.credentials.existingSecret.name }}
+                  key: {{ .Values.s3.credentials.existingSecret.secretKeyKey }}
             {{- else }}
-              value: {{ .Values.s3.secretKey }}
+              value: {{ .Values.s3.credentials.secretKey }}
             {{- end }}
           {{- end }}
             - name: JDBC_USER
