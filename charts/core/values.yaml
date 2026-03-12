@@ -446,28 +446,39 @@ runtime:
 s3:
   # s3.enabled -- Enable this option if you have an S3 deployment that you want to use with Core
   enabled: false
-  #  s3.accessKey -- Explicit declaration of the Access key of your S3 instance.
-  #  It has lower priority than the corresponding secret values.
-  accessKey: ""
   #  s3.bucket -- Bucket of your S3 instance
   bucket: ""
-  #  s3.dynamicCreds --
-  dynamicCreds:
-    #  s3.dynamicCreds.enabled -- Set this to true if you want to use dynamic credentials for S3 communication
-    enabled: false
-    #  s3.dynamicCreds.policy -- Set the policy to use when genereting credentials support only inline policy in json format
+  #  s3.credentials -- S3 credentials configuration
+  credentials:
+    #  s3.credentials.accessKey -- Explicit declaration of the Access key of your S3 instance.
+    #  It has lower priority than the corresponding secret values.
+    accessKey: ""
+    #  s3.credentials.claimPrefix -- Prefix for the claims related to S3 credentials
+    claimPrefix: ""
+    #  s3.credentials.duration -- Duration in seconds for the credentials.
+    duration: "3600"
+    #  s3.credentials.existingSecret -- Reference to the secret containing AccessKey and Secret key of your S3 instance.
+    #  These values have higher priority than the explicit declarations.
+    existingSecret:
+      #  s3.credentials.existingSecret.accessKeyKey -- Key corresponding to your accessKey in your secret
+      accessKeyKey: ""
+      #  s3.credentials.existingSecret.name -- Secret containing accessKey and secretKey of your s3 instance
+      name: ""
+      #  s3.credentials.existingSecret.secretKeyKey -- Key corresponding to your secretKey in your secret
+      secretKeyKey: ""
+    #  s3.credentials.policy -- Policy that the credentials for S3 operations will have.
+    #  It should be a JSON string in-line.
     policy: ""
+    #  s3.credentials.roleArn -- Role ARN to assume to get access to the S3 instance.
+    roleArn: ""
+    #  s3.credentials.secretKey -- Explicit declaration of the Secret key of your S3 instance.
+    #  It has lower priority than the corresponding secret values.
+    secretKey: ""
   #  s3.endpoint -- Endpoint of your S3 instance
   endpoint: ""
-  #  s3.existingSecret -- Reference to the secret containing AccessKey and Secret key of your S3 instance.
-  #  These values have higher priority than the explicit declarations.
-  existingSecret:
-    #  s3.existingSecret.accessKeyKey -- Key corresponding to your accessKey in your secret
-    accessKeyKey: ""
-    #  s3.existingSecret.name -- Secret containing accessKey and secretKey of your s3 instance
-    name: ""
-    #  s3.existingSecret.secretKeyKey -- Key corresponding to your secretKey in your secret
-    secretKeyKey: ""
+  #  s3.pathStyleAccess -- Whether to use path style access for S3 operations.
+  #  Set this to true if your S3 instance is any non AWS provider that requires path style access.
+  pathStyleAccess: true
   #  s3.port -- Port of your S3 instance
   port: ""
   #  s3.protocol -- Protocol of your S3 instance (http/https)
@@ -475,10 +486,9 @@ s3:
   #  s3.publicUrl -- Public url of your S3 instance
   publicUrl: ""
   #  s3.region -- Region used by your S3 instance
-  region: ""
-  #  s3.secretKey -- Explicit declaration of the Secret key of your S3 instance.
-  #  It has lower priority than the corresponding secret values.
-  secretKey: ""
+  region: "us-east-1"
+  #  s3.signatureVersion -- Signature version used by your S3 instance.
+  signatureVersion: "s3v4"
 
 #  securityContext -- Core [Security context for container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
 securityContext:
@@ -553,7 +563,7 @@ solr:
 
 #  sts --
 sts:
-  #  sts.enabled -- Enable/Disable STS component for dynamic credentials (Both for Postgres and S3 operations)
+  #  sts.enabled -- Enable/Disable STS component for dynamic credentials
   enabled: false
   #  sts.affinity -- Affinity for pod assignment.
   affinity: {}
