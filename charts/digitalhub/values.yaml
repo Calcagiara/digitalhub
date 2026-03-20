@@ -1154,6 +1154,10 @@ open-webui:
     nodePort: "30210"
     #  open-webui.service.type -- Service type
     type: *serviceType
+  #  open-webui.websocket -- Websocket configuration
+  websocket:
+    #  open-webui.websocket.enabled -- Enable/Disable Websocket support in OpenWebUI
+    enabled: false
 
 #  platformPackages -- Platform's packages configuration.
 #  Used for the tests and Code-Toolbox Coder template.
