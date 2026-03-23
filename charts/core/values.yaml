@@ -29,6 +29,8 @@ additionalConfig:
     enableLogs: true
     #  additionalConfig.debug.enableMetrics -- Enable/disable metrics
     enableMetrics: false
+  #  additionalConfig.defaultStorageClass -- Default storage class that will be used when no storage class is specified for ephemeral, pvc and workflow volumes
+  defaultStorageClass: ""
   #  additionalConfig.ephemeralVolume -- Ephemeral Volumes configurations
   ephemeralVolume:
     # additionalConfig.ephemeral.limits -- Configure max size for the ephemeral storage volumes
@@ -211,9 +213,6 @@ databaseProvider:
   host: ""
   #  databaseProvider.port -- Port of the main database of the platform
   port: ""
-
-#  defaultStorageClass -- Default storage class that should be used
-defaultStorageClass: ""
 
 extensions:
   #  extensions.path -- Path for Core extensions, in the format "/path/".
