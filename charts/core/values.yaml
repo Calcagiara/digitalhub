@@ -215,6 +215,11 @@ databaseProvider:
 #  defaultStorageClass -- Default storage class that should be used
 defaultStorageClass: ""
 
+extensions:
+  #  extensions.path -- Path for Core extensions, in the format "/path/".
+  #  Setting this value will enable the loading of extensions from the specified directory.
+  path: ""
+
 #  fullnameOverride -- String to fully override `core.fullname` template.
 fullnameOverride: ""
 
@@ -287,7 +292,7 @@ initImage:
     #  initImage.builderTool.image -- Cpre builder repository
     image: ghcr.io/scc-digitalhub/digitalhub-core-builder-tool
     #  initImage.builderTool.tag -- Core builder tag
-    tag: 5b6f4347
+    tag: 7c21c07c
 
 #  keystore --
 keystore:
