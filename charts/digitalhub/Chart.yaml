@@ -68,7 +68,7 @@ dependencies:
   tags:
     - operator
 - name: kubeai
-  version: "0.23.0"
+  version: "0.23.2"
   repository: https://www.kubeai.org
   condition: kubeai.enabled
 - name: open-webui
