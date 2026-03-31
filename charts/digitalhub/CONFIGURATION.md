@@ -2747,7 +2747,7 @@ object
       }
     ],
     "image": {
-      "tag": "v2.26.1"
+      "tag": "v2.31.6"
     },
     "ingress": {
       "enable": false
@@ -2912,7 +2912,7 @@ object
     }
   ],
   "image": {
-    "tag": "v2.26.1"
+    "tag": "v2.31.6"
   },
   "ingress": {
     "enable": false
@@ -2986,7 +2986,7 @@ object
 <summary>+Expand</summary>
 <pre lang="json">
 {
-  "tag": "v2.26.1"
+  "tag": "v2.31.6"
 }
 </pre>
 </details>
@@ -3002,7 +3002,7 @@ string
       <td>
 				<div style="max-width: 300px;">
 <pre lang="json">
-"v2.26.1"
+"v2.31.6"
 </pre>
 </div>
 			</td>
