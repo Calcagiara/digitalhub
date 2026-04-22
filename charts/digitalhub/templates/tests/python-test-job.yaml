@@ -2,14 +2,11 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-{{ $files := .Files -}}
-{{- range $key, $value := .Files }}
-{{- if hasPrefix "confs/tests/python-test/" $key }}
-{{- $testName := ($key | trimPrefix "confs/tests/python-test/" | trimSuffix ".py") }}
+{{ range $test := .Values.platformTests.scenarios }}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ include "digitalhub.fullname" $ }}-python-test-{{$testName}}"
+  name: "{{ include "digitalhub.fullname" $ }}-python-test-{{ $test }}"
   labels:
     {{- include "digitalhub.labels" $ | nindent 4 }}
   annotations:
@@ -17,47 +14,21 @@ metadata:
 spec:
   template:
     spec:
-      initContainers:
-        - name: clone-repo
-          image: chainguard/git:latest
-          command: ["/bin/sh", "-c", "git clone https://github.com/scc-digitalhub/digitalhub-tutorials.git"]
-          volumeMounts:
-            - name: git-volume
-              mountPath: /home/git
-              readOnly: false
-          securityContext:
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            readOnlyRootFilesystem: true
-            runAsUser: 1000
-            capabilities:
-              drop:
-                - ALL
-            seccompProfile:
-              type: RuntimeDefault
       containers:
         - name: python
-          image: "{{ $.Values.platformPackages.image | default "python" }}:{{ $.Values.platformPackages.tag | default "3.10-slim" }}"
-          command: ['sh', './home/scripts/init-python-script.sh']
-          volumeMounts:
-            - name: test-volume
-              mountPath: /home/src
-              readOnly: false
-            - name: test-python-script-volume
-              mountPath: /home/scripts/init-python-script.sh
-              readOnly: false
-              subPath: "init-python-script.sh"
-            - name: git-volume
-              mountPath: /home/git
-              readOnly: false
-            - name: local
-              mountPath: /.local
-              readOnly: false
+          image: "{{ $.Values.platformTests.image }}:{{ $.Values.platformTests.tag }}"
+          command:
+            - "/bin/sh"
+            - "-c"
+            {{- if $.Values.core.authentication.openId.enabled }}
+            - |
+              pip install requests-oauthlib && \
+              eval "$(python /scripts/init-python-script.py)" && \
+              /app/execute.sh {{ $test }}
+            {{- else }}
+            - /app/execute.sh {{ $test }}
+            {{- end }}
           env:
-            - name: TEST_SCRIPT
-              value: {{ $key | trimPrefix "confs/tests/python-test/" }}
-            - name: TEST_FOLDER
-              value: {{ $key | trimPrefix "confs/tests/python-test/" | trimSuffix ".py" }}
             - name: OAUTHLIB_INSECURE_TRANSPORT
               value: "True"
             {{- if $.Values.core.authentication.openId.enabled }}
@@ -95,6 +66,24 @@ spec:
               value: {{ $.Values.core.authentication.basic.username }}
             - name: "DHCORE_PASSWORD"
               value: {{ $.Values.core.authentication.basic.password }}
+            - name: AWS_ACCESS_KEY_ID
+              {{- if $.Values.core.s3.credentials.existingSecret.name }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $.Values.core.s3.credentials.existingSecret.name }}
+                  key: {{ $.Values.core.s3.credentials.existingSecret.accessKeyKey }}
+              {{- else }}
+              value: {{ $.Values.core.s3.credentials.accessKey }}
+              {{- end }}
+            - name: AWS_SECRET_ACCESS_KEY
+              {{- if $.Values.core.s3.credentials.existingSecret.name }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $.Values.core.s3.credentials.existingSecret.name }}
+                  key: {{ $.Values.core.s3.credentials.existingSecret.secretKeyKey }}
+              {{- else }}
+              value: {{ $.Values.core.s3.credentials.secretKey }}
+              {{- end }}
             {{- end }}
           envFrom:
           - configMapRef:
@@ -102,33 +91,34 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
-            readOnlyRootFilesystem: true
-            runAsUser: 1000
+            readOnlyRootFilesystem: false
+            runAsUser: 8877
             capabilities:
               drop:
                 - ALL
             seccompProfile:
               type: RuntimeDefault
-      volumes:
-        - name: test-volume
-          configMap:
-            name: {{ include "digitalhub.fullname" $ }}-python-test
-        - name: test-python-script-volume
-          configMap:
-            name: {{ include "digitalhub.fullname" $ }}-python-script-test
-        - name: git-volume
-          emptyDir: {}
-        - name: local
-          emptyDir: {}
+          {{- if $.Values.core.authentication.openId.enabled }}
+          volumeMounts:
+            - name: test-script-volume
+              mountPath: /scripts/test-script.py
+              readOnly: false
+              subPath: "test-script.py"
+          {{- end }}
       securityContext:
         runAsNonRoot: true
-        runAsUser: 1000
-        fsGroup: 1000
-        runAsGroup: 1000
+        runAsUser: 8877
+        fsGroup: 999
+        runAsGroup: 999
         seccompProfile:
           type: RuntimeDefault
       restartPolicy: Never
+      {{- if $.Values.core.authentication.openId.enabled }}
+      volumes:
+        - name: test-script-volume
+          configMap:
+            name: {{ include "digitalhub.fullname" $ }}-test-script
+      {{- end }}
   backoffLimit: 0
 ---
-{{- end }}
-{{- end }}
+{{ end }}

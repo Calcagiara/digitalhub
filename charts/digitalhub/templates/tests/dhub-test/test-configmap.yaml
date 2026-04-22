@@ -2,21 +2,11 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+{{- if .Values.core.authentication.openId.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "digitalhub.fullname" . }}-python-test
+  name: {{ include "digitalhub.fullname" . }}-test-script
 data:
-{{- $files := .Files }}
-{{- range $key, $value := .Files }}
-{{- if hasPrefix "confs/tests/python-test/" $key }}
-  {{ $key | trimPrefix "confs/tests/python-test/" }}: {{ tpl ($files.Get $key) $ | quote }}
+  init-python-script.py: {{ tpl ( .Files.Get "confs/tests/test-script.py") $ | quote }}
 {{- end }}
-{{- end }}
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ include "digitalhub.fullname" . }}-python-script-test
-data:
-  init-python-script.sh: {{ tpl ( .Files.Get "confs/tests/init-python-script.sh") $ | quote }}
