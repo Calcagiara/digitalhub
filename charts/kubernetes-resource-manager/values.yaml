@@ -29,6 +29,13 @@ env:
   #  env.additionalEnv -- Additional variables that will be passed to KRM container
   additionalEnv: {}
 
+#  envoyGateway -- Envoy Gateway integration configuration
+#  Configure the following settings only if you use Envoy/EnvoyAI Gateway in your environment.
+#  Utilization with any other gateway is not supported.
+envoyGateway:
+  #  envoyGateway.enabled -- Enable/Disable Envoy Gateway integration to create httpRoutes with KRM.
+  enabled: false
+
 #  fullnameOverride -- String to fully override `postgrest-operator.fullname` template.
 fullnameOverride: ""
 
@@ -266,7 +273,7 @@ resourceSelectors:
   #  resourceSelectors.secrets --
   secrets:
     #  resourceSelectors.secrets.labels -- Selector label for Secrets objects
-    labels: ""
+    labels: "app.kubernetes.io/managed-by=krm"
     #  resourceSelectors.secrets.names --
     names: (digitalhub\-owner|digitalhub\-reader|digitalhub\-writer).*
     #  resourceSelectors.secrets.owners --
