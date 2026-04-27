@@ -109,6 +109,7 @@ data:
   K8S_RESOURCE_PVC_DEFAULT: {{ .Values.additionalConfig.persistenVolumeClaim.requests | quote }}
   K8S_RESOURCE_WORKFLOW_STORAGE_CLASS: {{ .Values.additionalConfig.workflow.volume.storageClassName | quote }}
   K8S_RESOURCE_WORKFLOW_ACCESS_MODE: {{ .Values.additionalConfig.workflow.volume.accessMode | quote }}
+  K8S_CUSTOM_API_GROUPS: {{ .Values.additionalConfig.customApiGroups }}{{ if .Values.envoyGateway.genericGateway.enabled }},gateway.envoyproxy.io/v1alpha1,gateway.networking.k8s.io/v1{{ end }}{{ if .Values.envoyGateway.aiGateway.enabled }},aigateway.envoyproxy.io/v1alpha1{{ end }}
 {{- if .Values.kubeai.enabled }}
   RUNTIME_KUBEAI_ENDPOINT: {{ printf "%s%s:%s" "http://" .Values.kubeai.serviceName .Values.kubeai.port | quote }}
 {{- end }}
