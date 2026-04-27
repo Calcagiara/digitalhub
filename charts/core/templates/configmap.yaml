@@ -130,3 +130,13 @@ data:
 {{- end }}
   LUCENE_INDEX_PATH: {{ if .Values.solr.enabled }}"false"{{ else }}{{ .Values.lucene.indexPath | quote }}{{ end }}
   LUCENE_REINDEX: {{ .Values.lucene.reindex | quote }}
+{{- if .Values.envoyGateway.enabled }}
+  {{- if .Values.envoyGateway.genericGateway.enabled }}
+  GENERIC_GATEWAY_ENDPOINT: {{ .Values.envoyGateway.genericGateway.endpoint | quote }}
+  GENERIC_GATEWAY_NAME: {{ .Values.envoyGateway.genericGateway.name | quote }}
+  {{- end }}
+  {{- if .Values.envoyGateway.aiGateway.enabled }}
+  AI_GATEWAY_ENDPOINT: {{ .Values.envoyGateway.aiGateway.endpoint | quote }}
+  AI_GATEWAY_NAME: {{ .Values.envoyGateway.aiGateway.name | quote }}
+  {{- end }}
+{{- end }}

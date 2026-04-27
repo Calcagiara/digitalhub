@@ -215,6 +215,29 @@ databaseProvider:
 #  defaultStorageClass -- Default storage class that should be used
 defaultStorageClass: ""
 
+#  envoyGateway -- Envoy Gateway integration configuration.
+#  Configure the following settings only if you use Envoy/EnvoyAI Gateway in your environment.
+#  Utilization with any other gateway is not supported..
+envoyGateway:
+  #  envoyGateway.enabled -- Set this value to true if you want to enable the integration between Core and an Envoy Gateway
+  enabled: false
+  #  envoyGateway.aiGateway -- Configuration for an Envoy AI Gateway
+  aiGateway:
+    #  envoyGateway.aiGateway.enabled -- Enable/Disable the integration between Core and an Envoy AI Gateway
+    enabled: false
+    #  envoyGateway.aiGateway.endpoint -- Endpoint of the Envoy AI Gateway, in the format "servicename:port"
+    endpoint: ""
+    #  envoyGateway.aiGateway.name -- Name of the Envoy AI Gateway
+    name: ""
+  #  envoyGateway.genericGateway -- Configuration for a generic Envoy Gateway
+  genericGateway:
+    #  envoyGateway.genericGateway.enabled -- Enable/Disable the integration between Core and a generic Envoy Gateway
+    enabled: false
+    #  envoyGateway.genericGateway.endpoint -- Endpoint of the generic Envoy Gateway, in the format "servicename:port"
+    endpoint: ""
+    #  envoyGateway.genericGateway.name -- Name of the generic Envoy Gateway
+    name: ""
+
 #  fullnameOverride -- String to fully override `core.fullname` template.
 fullnameOverride: ""
 
