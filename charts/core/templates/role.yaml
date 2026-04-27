@@ -89,3 +89,38 @@ rules:
   verbs:
   - get
   - list
+{{- if .Values.envoyGateway.enabled }}
+{{- if .Values.envoyGateway.genericGateway.enabled }}
+- apiGroups:
+  - gateway.envoyproxy.io
+  resources:
+  - backends
+  - envoyextensionpolicies
+  verbs:
+  - create
+  - get
+  - list
+  - delete
+- apiGroups:
+  - gateway.networking.k8s.io
+  resources:
+  - httproutes
+  verbs:
+  - create
+  - get
+  - list
+  - delete
+{{- end }}
+{{- if .Values.envoyGateway.aiGateway.enabled }}
+- apiGroups:
+  - aigateway.envoyproxy.io
+  resources:
+  - aigatewayroutes
+  - aiservicebackends
+  verbs:
+  - create
+  - get
+  - list
+  - delete
+{{- end }}
+{{- end }}
