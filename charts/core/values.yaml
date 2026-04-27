@@ -23,6 +23,8 @@ global:
 
 #  additionalConfig --
 additionalConfig:
+  #  additionalConfig.customApiGroups -- Custom API groups that Core should be aware of, specified as a comma separated list of group/version
+  customApiGroups: kubeai.org/v1
   #  additionalConfig.debug --
   debug:
     #  additionalConfig.debug.enableLogs -- Enable/disable logging
