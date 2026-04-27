@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 # kubernetes-resource-manager
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/scc-digitalhub/digitalhub/release.yaml?event=push) [![license](https://img.shields.io/badge/license-Apache%202.0-blue)](https://github.com/scc-digitalhub/digitalhub/tree/main/charts/kubernetes-resource-manager/LICENSE) ![GitHub Release](https://img.shields.io/github/v/release/scc-digitalhub/digitalhub?filter=kubernetes-resource-manager*)
-![Status](https://img.shields.io/badge/status-stable-gold) ![Version: 0.2.17](https://img.shields.io/badge/Version-0.2.17-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.3.1](https://img.shields.io/badge/AppVersion-1.3.1-informational?style=flat-square)
+![Status](https://img.shields.io/badge/status-stable-gold) ![Version: 0.2.18](https://img.shields.io/badge/Version-0.2.18-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.4.0](https://img.shields.io/badge/AppVersion-1.4.0-informational?style=flat-square)
 
 A manager for resources in Kubernetes. The tool allows for monitoring and managing some of the standard Kubernetes resources (PersistentVolumeClaim, Services, Deployments, Jobs, and Secrets) as well as for managing a selection of Custom Resources.
 
@@ -231,7 +231,40 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="fullnameOverride"><a href="./values.yaml#L33">fullnameOverride</a></td>
+			<td id="envoyGateway"><a href="./values.yaml#L35">envoyGateway</a></td>
+			<td>
+object
+</td>
+			<td>Envoy Gateway integration configuration  Configure the following settings only if you use Envoy/EnvoyAI Gateway in your environment.  Utilization with any other gateway is not supported.</td>
+      <td>
+				<div style="max-width: 300px;">
+<details>
+<summary>+Expand</summary>
+<pre lang="json">
+{
+  "enabled": false
+}
+</pre>
+</details>
+</div>
+			</td>
+		</tr>
+		<tr>
+			<td id="envoyGateway--enabled"><a href="./values.yaml#L37">envoyGateway.enabled</a></td>
+			<td>
+bool
+</td>
+			<td>Enable/Disable Envoy Gateway integration to create httpRoutes with KRM.</td>
+      <td>
+				<div style="max-width: 300px;">
+<pre lang="json">
+false
+</pre>
+</div>
+			</td>
+		</tr>
+		<tr>
+			<td id="fullnameOverride"><a href="./values.yaml#L40">fullnameOverride</a></td>
 			<td>
 string
 </td>
@@ -245,7 +278,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="image"><a href="./values.yaml#L36">image</a></td>
+			<td id="image"><a href="./values.yaml#L43">image</a></td>
 			<td>
 object
 </td>
@@ -266,7 +299,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="image--pullPolicy"><a href="./values.yaml#L38">image.pullPolicy</a></td>
+			<td id="image--pullPolicy"><a href="./values.yaml#L45">image.pullPolicy</a></td>
 			<td>
 string
 </td>
@@ -280,7 +313,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="image--repository"><a href="./values.yaml#L40">image.repository</a></td>
+			<td id="image--repository"><a href="./values.yaml#L47">image.repository</a></td>
 			<td>
 string
 </td>
@@ -294,7 +327,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="image--tag"><a href="./values.yaml#L42">image.tag</a></td>
+			<td id="image--tag"><a href="./values.yaml#L49">image.tag</a></td>
 			<td>
 string
 </td>
@@ -308,7 +341,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="imagePullSecrets"><a href="./values.yaml#L48">imagePullSecrets</a></td>
+			<td id="imagePullSecrets"><a href="./values.yaml#L55">imagePullSecrets</a></td>
 			<td>
 list
 </td>
@@ -325,7 +358,7 @@ list
 			</td>
 		</tr>
 		<tr>
-			<td id="ingress"><a href="./values.yaml#L51">ingress</a></td>
+			<td id="ingress"><a href="./values.yaml#L58">ingress</a></td>
 			<td>
 object
 </td>
@@ -358,7 +391,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="ingress--enabled"><a href="./values.yaml#L53">ingress.enabled</a></td>
+			<td id="ingress--enabled"><a href="./values.yaml#L60">ingress.enabled</a></td>
 			<td>
 bool
 </td>
@@ -372,7 +405,7 @@ false
 			</td>
 		</tr>
 		<tr>
-			<td id="ingress--annotations"><a href="./values.yaml#L55">ingress.annotations</a></td>
+			<td id="ingress--annotations"><a href="./values.yaml#L62">ingress.annotations</a></td>
 			<td>
 object
 </td>
@@ -389,7 +422,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="ingress--className"><a href="./values.yaml#L57">ingress.className</a></td>
+			<td id="ingress--className"><a href="./values.yaml#L64">ingress.className</a></td>
 			<td>
 string
 </td>
@@ -403,7 +436,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="ingress--hosts"><a href="./values.yaml#L59">ingress.hosts</a></td>
+			<td id="ingress--hosts"><a href="./values.yaml#L66">ingress.hosts</a></td>
 			<td>
 list
 </td>
@@ -430,7 +463,7 @@ list
 			</td>
 		</tr>
 		<tr>
-			<td id="ingress--tls"><a href="./values.yaml#L65">ingress.tls</a></td>
+			<td id="ingress--tls"><a href="./values.yaml#L72">ingress.tls</a></td>
 			<td>
 list
 </td>
@@ -447,7 +480,7 @@ list
 			</td>
 		</tr>
 		<tr>
-			<td id="nameOverride"><a href="./values.yaml#L68">nameOverride</a></td>
+			<td id="nameOverride"><a href="./values.yaml#L75">nameOverride</a></td>
 			<td>
 string
 </td>
@@ -461,7 +494,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="namespaceValues"><a href="./values.yaml#L71">namespaceValues</a></td>
+			<td id="namespaceValues"><a href="./values.yaml#L78">namespaceValues</a></td>
 			<td>
 object
 </td>
@@ -481,7 +514,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="namespaceValues--defaultValue"><a href="./values.yaml#L73">namespaceValues.defaultValue</a></td>
+			<td id="namespaceValues--defaultValue"><a href="./values.yaml#L80">namespaceValues.defaultValue</a></td>
 			<td>
 string
 </td>
@@ -495,7 +528,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="namespaceValues--namespace"><a href="./values.yaml#L75">namespaceValues.namespace</a></td>
+			<td id="namespaceValues--namespace"><a href="./values.yaml#L82">namespaceValues.namespace</a></td>
 			<td>
 string
 </td>
@@ -509,7 +542,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="nodeSelector"><a href="./values.yaml#L78">nodeSelector</a></td>
+			<td id="nodeSelector"><a href="./values.yaml#L85">nodeSelector</a></td>
 			<td>
 object
 </td>
@@ -526,7 +559,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc"><a href="./values.yaml#L81">oidc</a></td>
+			<td id="oidc"><a href="./values.yaml#L88">oidc</a></td>
 			<td>
 object
 </td>
@@ -567,7 +600,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--enabled"><a href="./values.yaml#L83">oidc.enabled</a></td>
+			<td id="oidc--enabled"><a href="./values.yaml#L90">oidc.enabled</a></td>
 			<td>
 bool
 </td>
@@ -581,7 +614,7 @@ false
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--access"><a href="./values.yaml#L85">oidc.access</a></td>
+			<td id="oidc--access"><a href="./values.yaml#L92">oidc.access</a></td>
 			<td>
 object
 </td>
@@ -600,7 +633,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--access--roles"><a href="./values.yaml#L87">oidc.access.roles</a></td>
+			<td id="oidc--access--roles"><a href="./values.yaml#L94">oidc.access.roles</a></td>
 			<td>
 list
 </td>
@@ -617,7 +650,7 @@ list
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--audience"><a href="./values.yaml#L89">oidc.audience</a></td>
+			<td id="oidc--audience"><a href="./values.yaml#L96">oidc.audience</a></td>
 			<td>
 object
 </td>
@@ -640,7 +673,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--audience--externalSecret"><a href="./values.yaml#L91">oidc.audience.externalSecret</a></td>
+			<td id="oidc--audience--externalSecret"><a href="./values.yaml#L98">oidc.audience.externalSecret</a></td>
 			<td>
 object
 </td>
@@ -660,7 +693,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--audience--externalSecret--key"><a href="./values.yaml#L93">oidc.audience.externalSecret.key</a></td>
+			<td id="oidc--audience--externalSecret--key"><a href="./values.yaml#L100">oidc.audience.externalSecret.key</a></td>
 			<td>
 string
 </td>
@@ -674,7 +707,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--audience--externalSecret--name"><a href="./values.yaml#L95">oidc.audience.externalSecret.name</a></td>
+			<td id="oidc--audience--externalSecret--name"><a href="./values.yaml#L102">oidc.audience.externalSecret.name</a></td>
 			<td>
 string
 </td>
@@ -688,7 +721,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--audience--value"><a href="./values.yaml#L97">oidc.audience.value</a></td>
+			<td id="oidc--audience--value"><a href="./values.yaml#L104">oidc.audience.value</a></td>
 			<td>
 string
 </td>
@@ -702,7 +735,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--authType"><a href="./values.yaml#L99">oidc.authType</a></td>
+			<td id="oidc--authType"><a href="./values.yaml#L106">oidc.authType</a></td>
 			<td>
 string
 </td>
@@ -716,7 +749,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--clientId"><a href="./values.yaml#L101">oidc.clientId</a></td>
+			<td id="oidc--clientId"><a href="./values.yaml#L108">oidc.clientId</a></td>
 			<td>
 object
 </td>
@@ -739,7 +772,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--clientId--externalSecret"><a href="./values.yaml#L103">oidc.clientId.externalSecret</a></td>
+			<td id="oidc--clientId--externalSecret"><a href="./values.yaml#L110">oidc.clientId.externalSecret</a></td>
 			<td>
 object
 </td>
@@ -759,7 +792,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--clientId--externalSecret--key"><a href="./values.yaml#L105">oidc.clientId.externalSecret.key</a></td>
+			<td id="oidc--clientId--externalSecret--key"><a href="./values.yaml#L112">oidc.clientId.externalSecret.key</a></td>
 			<td>
 string
 </td>
@@ -773,7 +806,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--clientId--externalSecret--name"><a href="./values.yaml#L107">oidc.clientId.externalSecret.name</a></td>
+			<td id="oidc--clientId--externalSecret--name"><a href="./values.yaml#L114">oidc.clientId.externalSecret.name</a></td>
 			<td>
 string
 </td>
@@ -787,7 +820,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--clientId--value"><a href="./values.yaml#L109">oidc.clientId.value</a></td>
+			<td id="oidc--clientId--value"><a href="./values.yaml#L116">oidc.clientId.value</a></td>
 			<td>
 string
 </td>
@@ -801,7 +834,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--issuer"><a href="./values.yaml#L111">oidc.issuer</a></td>
+			<td id="oidc--issuer"><a href="./values.yaml#L118">oidc.issuer</a></td>
 			<td>
 string
 </td>
@@ -815,7 +848,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--redirectUrl"><a href="./values.yaml#L113">oidc.redirectUrl</a></td>
+			<td id="oidc--redirectUrl"><a href="./values.yaml#L120">oidc.redirectUrl</a></td>
 			<td>
 string
 </td>
@@ -829,7 +862,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--roleClaim"><a href="./values.yaml#L115">oidc.roleClaim</a></td>
+			<td id="oidc--roleClaim"><a href="./values.yaml#L122">oidc.roleClaim</a></td>
 			<td>
 string
 </td>
@@ -843,7 +876,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="oidc--scope"><a href="./values.yaml#L117">oidc.scope</a></td>
+			<td id="oidc--scope"><a href="./values.yaml#L124">oidc.scope</a></td>
 			<td>
 string
 </td>
@@ -857,7 +890,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="podAnnotations"><a href="./values.yaml#L120">podAnnotations</a></td>
+			<td id="podAnnotations"><a href="./values.yaml#L127">podAnnotations</a></td>
 			<td>
 object
 </td>
@@ -874,7 +907,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="podSecurityContext"><a href="./values.yaml#L123">podSecurityContext</a></td>
+			<td id="podSecurityContext"><a href="./values.yaml#L130">podSecurityContext</a></td>
 			<td>
 object
 </td>
@@ -899,7 +932,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="podSecurityContext--fsGroup"><a href="./values.yaml#L125">podSecurityContext.fsGroup</a></td>
+			<td id="podSecurityContext--fsGroup"><a href="./values.yaml#L132">podSecurityContext.fsGroup</a></td>
 			<td>
 int
 </td>
@@ -913,7 +946,7 @@ int
 			</td>
 		</tr>
 		<tr>
-			<td id="podSecurityContext--runAsGroup"><a href="./values.yaml#L127">podSecurityContext.runAsGroup</a></td>
+			<td id="podSecurityContext--runAsGroup"><a href="./values.yaml#L134">podSecurityContext.runAsGroup</a></td>
 			<td>
 int
 </td>
@@ -927,7 +960,7 @@ int
 			</td>
 		</tr>
 		<tr>
-			<td id="podSecurityContext--runAsNonRoot"><a href="./values.yaml#L129">podSecurityContext.runAsNonRoot</a></td>
+			<td id="podSecurityContext--runAsNonRoot"><a href="./values.yaml#L136">podSecurityContext.runAsNonRoot</a></td>
 			<td>
 bool
 </td>
@@ -941,7 +974,7 @@ true
 			</td>
 		</tr>
 		<tr>
-			<td id="podSecurityContext--runAsUser"><a href="./values.yaml#L131">podSecurityContext.runAsUser</a></td>
+			<td id="podSecurityContext--runAsUser"><a href="./values.yaml#L138">podSecurityContext.runAsUser</a></td>
 			<td>
 int
 </td>
@@ -955,7 +988,7 @@ int
 			</td>
 		</tr>
 		<tr>
-			<td id="podSecurityContext--seccompProfile"><a href="./values.yaml#L133">podSecurityContext.seccompProfile</a></td>
+			<td id="podSecurityContext--seccompProfile"><a href="./values.yaml#L140">podSecurityContext.seccompProfile</a></td>
 			<td>
 object
 </td>
@@ -974,7 +1007,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="podSecurityContext--seccompProfile--type"><a href="./values.yaml#L135">podSecurityContext.seccompProfile.type</a></td>
+			<td id="podSecurityContext--seccompProfile--type"><a href="./values.yaml#L142">podSecurityContext.seccompProfile.type</a></td>
 			<td>
 string
 </td>
@@ -988,7 +1021,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="priorityClassName"><a href="./values.yaml#L138">priorityClassName</a></td>
+			<td id="priorityClassName"><a href="./values.yaml#L145">priorityClassName</a></td>
 			<td>
 string
 </td>
@@ -1002,7 +1035,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="rbac"><a href="./values.yaml#L141">rbac</a></td>
+			<td id="rbac"><a href="./values.yaml#L148">rbac</a></td>
 			<td>
 object
 </td>
@@ -1167,7 +1200,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="rbac--clusterRole"><a href="./values.yaml#L143">rbac.clusterRole</a></td>
+			<td id="rbac--clusterRole"><a href="./values.yaml#L150">rbac.clusterRole</a></td>
 			<td>
 object
 </td>
@@ -1186,7 +1219,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="rbac--clusterRole--create"><a href="./values.yaml#L145">rbac.clusterRole.create</a></td>
+			<td id="rbac--clusterRole--create"><a href="./values.yaml#L152">rbac.clusterRole.create</a></td>
 			<td>
 bool
 </td>
@@ -1200,7 +1233,7 @@ true
 			</td>
 		</tr>
 		<tr>
-			<td id="rbac--namespaced"><a href="./values.yaml#L147">rbac.namespaced</a></td>
+			<td id="rbac--namespaced"><a href="./values.yaml#L154">rbac.namespaced</a></td>
 			<td>
 bool
 </td>
@@ -1214,7 +1247,7 @@ true
 			</td>
 		</tr>
 		<tr>
-			<td id="rbac--roles"><a href="./values.yaml#L152">rbac.roles</a></td>
+			<td id="rbac--roles"><a href="./values.yaml#L159">rbac.roles</a></td>
 			<td>
 list
 </td>
@@ -1373,7 +1406,7 @@ list
 			</td>
 		</tr>
 		<tr>
-			<td id="replicaCount"><a href="./values.yaml#L252">replicaCount</a></td>
+			<td id="replicaCount"><a href="./values.yaml#L259">replicaCount</a></td>
 			<td>
 int
 </td>
@@ -1387,7 +1420,7 @@ int
 			</td>
 		</tr>
 		<tr>
-			<td id="resourceSelectors"><a href="./values.yaml#L255">resourceSelectors</a></td>
+			<td id="resourceSelectors"><a href="./values.yaml#L262">resourceSelectors</a></td>
 			<td>
 object
 </td>
@@ -1405,7 +1438,7 @@ object
     "managedBy": "krm"
   },
   "secrets": {
-    "labels": "",
+    "labels": "app.kubernetes.io/managed-by=krm",
     "names": "(digitalhub\\-owner|digitalhub\\-reader|digitalhub\\-writer).*",
     "owners": "db.movetokube.com/v1alpha1"
   },
@@ -1417,7 +1450,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="resourceSelectors--deployments"><a href="./values.yaml#L257">resourceSelectors.deployments</a></td>
+			<td id="resourceSelectors--deployments"><a href="./values.yaml#L264">resourceSelectors.deployments</a></td>
 			<td>
 string
 </td>
@@ -1431,7 +1464,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="resourceSelectors--jobs"><a href="./values.yaml#L259">resourceSelectors.jobs</a></td>
+			<td id="resourceSelectors--jobs"><a href="./values.yaml#L266">resourceSelectors.jobs</a></td>
 			<td>
 string
 </td>
@@ -1445,7 +1478,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="resourceSelectors--pvcs"><a href="./values.yaml#L261">resourceSelectors.pvcs</a></td>
+			<td id="resourceSelectors--pvcs"><a href="./values.yaml#L268">resourceSelectors.pvcs</a></td>
 			<td>
 object
 </td>
@@ -1465,7 +1498,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="resourceSelectors--pvcs--labels"><a href="./values.yaml#L263">resourceSelectors.pvcs.labels</a></td>
+			<td id="resourceSelectors--pvcs--labels"><a href="./values.yaml#L270">resourceSelectors.pvcs.labels</a></td>
 			<td>
 string
 </td>
@@ -1479,7 +1512,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="resourceSelectors--pvcs--managedBy"><a href="./values.yaml#L265">resourceSelectors.pvcs.managedBy</a></td>
+			<td id="resourceSelectors--pvcs--managedBy"><a href="./values.yaml#L272">resourceSelectors.pvcs.managedBy</a></td>
 			<td>
 string
 </td>
@@ -1493,7 +1526,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="resourceSelectors--secrets"><a href="./values.yaml#L267">resourceSelectors.secrets</a></td>
+			<td id="resourceSelectors--secrets"><a href="./values.yaml#L274">resourceSelectors.secrets</a></td>
 			<td>
 object
 </td>
@@ -1504,7 +1537,7 @@ object
 <summary>+Expand</summary>
 <pre lang="json">
 {
-  "labels": "",
+  "labels": "app.kubernetes.io/managed-by=krm",
   "names": "(digitalhub\\-owner|digitalhub\\-reader|digitalhub\\-writer).*",
   "owners": "db.movetokube.com/v1alpha1"
 }
@@ -1514,7 +1547,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="resourceSelectors--secrets--labels"><a href="./values.yaml#L269">resourceSelectors.secrets.labels</a></td>
+			<td id="resourceSelectors--secrets--labels"><a href="./values.yaml#L276">resourceSelectors.secrets.labels</a></td>
 			<td>
 string
 </td>
@@ -1522,13 +1555,13 @@ string
       <td>
 				<div style="max-width: 300px;">
 <pre lang="json">
-""
+"app.kubernetes.io/managed-by=krm"
 </pre>
 </div>
 			</td>
 		</tr>
 		<tr>
-			<td id="resourceSelectors--secrets--names"><a href="./values.yaml#L271">resourceSelectors.secrets.names</a></td>
+			<td id="resourceSelectors--secrets--names"><a href="./values.yaml#L278">resourceSelectors.secrets.names</a></td>
 			<td>
 string
 </td>
@@ -1542,7 +1575,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="resourceSelectors--secrets--owners"><a href="./values.yaml#L273">resourceSelectors.secrets.owners</a></td>
+			<td id="resourceSelectors--secrets--owners"><a href="./values.yaml#L280">resourceSelectors.secrets.owners</a></td>
 			<td>
 string
 </td>
@@ -1556,7 +1589,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="resourceSelectors--services"><a href="./values.yaml#L275">resourceSelectors.services</a></td>
+			<td id="resourceSelectors--services"><a href="./values.yaml#L282">resourceSelectors.services</a></td>
 			<td>
 string
 </td>
@@ -1570,7 +1603,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="resources"><a href="./values.yaml#L278">resources</a></td>
+			<td id="resources"><a href="./values.yaml#L285">resources</a></td>
 			<td>
 object
 </td>
@@ -1596,7 +1629,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="securityContext"><a href="./values.yaml#L287">securityContext</a></td>
+			<td id="securityContext"><a href="./values.yaml#L294">securityContext</a></td>
 			<td>
 object
 </td>
@@ -1624,7 +1657,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="securityContext--allowPrivilegeEscalation"><a href="./values.yaml#L289">securityContext.allowPrivilegeEscalation</a></td>
+			<td id="securityContext--allowPrivilegeEscalation"><a href="./values.yaml#L296">securityContext.allowPrivilegeEscalation</a></td>
 			<td>
 bool
 </td>
@@ -1638,7 +1671,7 @@ false
 			</td>
 		</tr>
 		<tr>
-			<td id="securityContext--capabilities"><a href="./values.yaml#L291">securityContext.capabilities</a></td>
+			<td id="securityContext--capabilities"><a href="./values.yaml#L298">securityContext.capabilities</a></td>
 			<td>
 object
 </td>
@@ -1659,7 +1692,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="securityContext--capabilities--drop"><a href="./values.yaml#L293">securityContext.capabilities.drop</a></td>
+			<td id="securityContext--capabilities--drop"><a href="./values.yaml#L300">securityContext.capabilities.drop</a></td>
 			<td>
 list
 </td>
@@ -1678,7 +1711,7 @@ list
 			</td>
 		</tr>
 		<tr>
-			<td id="securityContext--runAsNonRoot"><a href="./values.yaml#L296">securityContext.runAsNonRoot</a></td>
+			<td id="securityContext--runAsNonRoot"><a href="./values.yaml#L303">securityContext.runAsNonRoot</a></td>
 			<td>
 bool
 </td>
@@ -1692,7 +1725,7 @@ true
 			</td>
 		</tr>
 		<tr>
-			<td id="securityContext--seccompProfile"><a href="./values.yaml#L298">securityContext.seccompProfile</a></td>
+			<td id="securityContext--seccompProfile"><a href="./values.yaml#L305">securityContext.seccompProfile</a></td>
 			<td>
 object
 </td>
@@ -1711,7 +1744,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="securityContext--seccompProfile--type"><a href="./values.yaml#L300">securityContext.seccompProfile.type</a></td>
+			<td id="securityContext--seccompProfile--type"><a href="./values.yaml#L307">securityContext.seccompProfile.type</a></td>
 			<td>
 string
 </td>
@@ -1725,7 +1758,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="service"><a href="./values.yaml#L303">service</a></td>
+			<td id="service"><a href="./values.yaml#L310">service</a></td>
 			<td>
 object
 </td>
@@ -1746,7 +1779,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="service--nodePort"><a href="./values.yaml#L305">service.nodePort</a></td>
+			<td id="service--nodePort"><a href="./values.yaml#L312">service.nodePort</a></td>
 			<td>
 string
 </td>
@@ -1760,7 +1793,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="service--port"><a href="./values.yaml#L307">service.port</a></td>
+			<td id="service--port"><a href="./values.yaml#L314">service.port</a></td>
 			<td>
 int
 </td>
@@ -1774,7 +1807,7 @@ int
 			</td>
 		</tr>
 		<tr>
-			<td id="service--type"><a href="./values.yaml#L309">service.type</a></td>
+			<td id="service--type"><a href="./values.yaml#L316">service.type</a></td>
 			<td>
 string
 </td>
@@ -1788,7 +1821,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="serviceAccount"><a href="./values.yaml#L312">serviceAccount</a></td>
+			<td id="serviceAccount"><a href="./values.yaml#L319">serviceAccount</a></td>
 			<td>
 object
 </td>
@@ -1809,7 +1842,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="serviceAccount--annotations"><a href="./values.yaml#L314">serviceAccount.annotations</a></td>
+			<td id="serviceAccount--annotations"><a href="./values.yaml#L321">serviceAccount.annotations</a></td>
 			<td>
 object
 </td>
@@ -1826,7 +1859,7 @@ object
 			</td>
 		</tr>
 		<tr>
-			<td id="serviceAccount--create"><a href="./values.yaml#L316">serviceAccount.create</a></td>
+			<td id="serviceAccount--create"><a href="./values.yaml#L323">serviceAccount.create</a></td>
 			<td>
 bool
 </td>
@@ -1840,7 +1873,7 @@ true
 			</td>
 		</tr>
 		<tr>
-			<td id="serviceAccount--name"><a href="./values.yaml#L318">serviceAccount.name</a></td>
+			<td id="serviceAccount--name"><a href="./values.yaml#L325">serviceAccount.name</a></td>
 			<td>
 string
 </td>
@@ -1854,7 +1887,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="storageClasses"><a href="./values.yaml#L321">storageClasses</a></td>
+			<td id="storageClasses"><a href="./values.yaml#L328">storageClasses</a></td>
 			<td>
 string
 </td>
@@ -1868,7 +1901,7 @@ string
 			</td>
 		</tr>
 		<tr>
-			<td id="tolerations"><a href="./values.yaml#L324">tolerations</a></td>
+			<td id="tolerations"><a href="./values.yaml#L331">tolerations</a></td>
 			<td>
 list
 </td>
