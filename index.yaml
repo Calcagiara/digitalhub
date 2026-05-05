@@ -3,6 +3,21 @@ entries:
   aac:
   - apiVersion: v2
     appVersion: 5.3.0
+    created: "2026-05-05T11:25:33.899079986Z"
+    description: A Helm chart for Kubernetes
+    digest: cf668e29b3920a59f5a18414bf41c2c9a165103ed6977ab7c36eac1e74f74cdf
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: aac
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/aac-0.1.18/aac-0.1.18.tgz
+    version: 0.1.18
+  - apiVersion: v2
+    appVersion: 5.3.0
     created: "2025-07-16T08:34:33.003688133Z"
     description: A Helm chart for Kubernetes
     digest: c25c670e13dc51bfb59ca4530b21d48c95f41744407061ed3ab157da4579be08
@@ -24624,4 +24639,4 @@ entries:
     urls:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/postgrest-operator-0.1.0/postgrest-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2026-05-04T07:45:22.040548432Z"
+generated: "2026-05-05T11:25:33.899949811Z"
