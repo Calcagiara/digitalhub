@@ -493,6 +493,25 @@ entries:
   core:
   - apiVersion: v2
     appVersion: 0.14.3
+    created: "2026-05-28T12:46:56.869512436Z"
+    description: DigitalHub Core is part of the DigitalHub platform, and depends on
+      external components to support the complete set of functionalities.
+    digest: 38e0d86eaf8a7b356c169105541f9319cb4b77c6971d1a1dc60fcc20bf5061f1
+    home: https://github.com/scc-digitalhub/digitalhub/tree/main/charts/core
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: core
+    sources:
+    - https://github.com/scc-digitalhub/digitalhub-core
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/core-0.3.44/core-0.3.44.tgz
+    version: 0.3.44
+  - apiVersion: v2
+    appVersion: 0.14.3
     created: "2026-05-06T12:53:24.677849574Z"
     description: DigitalHub Core is part of the DigitalHub platform, and depends on
       external components to support the complete set of functionalities.
@@ -24756,4 +24775,4 @@ entries:
     urls:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/postgrest-operator-0.1.0/postgrest-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2026-05-25T13:10:40.615662714Z"
+generated: "2026-05-28T12:46:57.05018932Z"
