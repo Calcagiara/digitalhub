@@ -493,6 +493,25 @@ entries:
   core:
   - apiVersion: v2
     appVersion: 0.15.0
+    created: "2026-07-16T13:02:59.922216704Z"
+    description: DigitalHub Core is part of the DigitalHub platform, and depends on
+      external components to support the complete set of functionalities.
+    digest: 70c6152b6d9191d512df3d09702ef8a52c2f0aa1025e48bf8136ac7edce3fbda
+    home: https://github.com/scc-digitalhub/digitalhub/tree/main/charts/core
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: core
+    sources:
+    - https://github.com/scc-digitalhub/digitalhub-core
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/core-0.3.48/core-0.3.48.tgz
+    version: 0.3.48
+  - apiVersion: v2
+    appVersion: 0.15.0
     created: "2026-07-13T12:53:20.296200249Z"
     description: DigitalHub Core is part of the DigitalHub platform, and depends on
       external components to support the complete set of functionalities.
@@ -25169,4 +25188,20 @@ entries:
     urls:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/postgrest-operator-0.1.0/postgrest-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2026-07-14T13:09:45.688508024Z"
+  resources-profile-generator:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-07-16T13:03:00.077169478Z"
+    description: Helm chart to generate resource profile templates in a ConfigMap
+    digest: 2d56724eb48da6e718722a8366dd9de234841d6bfef785008e9223b662477a6a
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: resources-profile-generator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/resources-profile-generator-0.1.0/resources-profile-generator-0.1.0.tgz
+    version: 0.1.0
+generated: "2026-07-16T13:03:00.078346908Z"
