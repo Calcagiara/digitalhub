@@ -537,6 +537,25 @@ entries:
     version: 0.1.0
   core:
   - apiVersion: v2
+    appVersion: 0.15.1
+    created: "2026-08-06T14:09:19.832674903Z"
+    description: DigitalHub Core is part of the DigitalHub platform, and depends on
+      external components to support the complete set of functionalities.
+    digest: 6907e432d326f5e04cfefbe68d76124f771147223e6aea112166617302f81685
+    home: https://github.com/scc-digitalhub/digitalhub/tree/main/charts/core
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: core
+    sources:
+    - https://github.com/scc-digitalhub/digitalhub-core
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/core-0.3.52/core-0.3.52.tgz
+    version: 0.3.52
+  - apiVersion: v2
     appVersion: 0.15.0
     created: "2026-07-28T08:10:46.526316298Z"
     description: DigitalHub Core is part of the DigitalHub platform, and depends on
@@ -2344,6 +2363,85 @@ entries:
     - https://github.com/scc-digitalhub/digitalhub/releases/download/custom-resource-manager-0.1.0/custom-resource-manager-0.1.0.tgz
     version: 0.1.0
   digitalhub:
+  - apiVersion: v2
+    appVersion: 0.15.1
+    created: "2026-08-06T14:09:20.074423893Z"
+    dependencies:
+    - condition: argo-workflows.enabled
+      name: argo-workflows
+      repository: https://argoproj.github.io/argo-helm
+      version: 0.45.1
+    - condition: apigw-operator.enabled
+      name: apigw-operator
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 0.1.22
+    - condition: coder.enabled
+      name: coder
+      repository: https://helm.coder.com/v2
+      version: 2.32.4
+    - condition: core.enabled
+      name: core
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 0.3.52
+    - condition: kubernetes-resource-manager.enabled
+      name: kubernetes-resource-manager
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 0.2.19
+    - condition: dremio-rest-server-operator.enabled
+      name: dremio-rest-server-operator
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 0.1.9
+    - condition: docker-registry.enabled
+      name: docker-registry
+      repository: https://twuni.github.io/docker-registry.helm
+      version: 2.3.0
+    - condition: ext-postgres-operator.enabled
+      name: ext-postgres-operator
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 1.2.8
+    - condition: seaweedfs.enabled
+      name: seaweedfs
+      repository: https://seaweedfs.github.io/seaweedfs/helm
+      version: 4.0.393
+    - condition: postgres-operator.enabled
+      name: postgres-operator
+      repository: https://opensource.zalando.com/postgres-operator/charts/postgres-operator
+      tags:
+      - operator
+      version: 1.11.0
+    - condition: postgrest-operator.enabled
+      name: postgrest-operator
+      repository: https://scc-digitalhub.github.io/digitalhub/
+      version: 0.1.11
+    - condition: template-controller.enabled
+      name: template-controller
+      repository: https://kluctl.github.io/charts
+      tags:
+      - operator
+      version: 0.2.5
+    - condition: kubeai.enabled
+      name: kubeai
+      repository: https://www.kubeai.org
+      version: 0.23.2
+    - condition: open-webui.enabled
+      name: open-webui
+      repository: https://helm.openwebui.com/
+      version: 14.8.0
+    description: The Digital Hub is an open-source platform for interoperability of
+      data and services, built by integrating several open-source projects to manage,
+      elaborate, expose and serve data through modern standards.
+    digest: bce15cb126d3e1b9944bc9aad901d37830b881145366d705fd62447e26aa12b4
+    home: https://github.com/scc-digitalhub/digitalhub/tree/main/charts/digitalhub
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: digitalhub
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/digitalhub-0.15.4-beta7/digitalhub-0.15.4-beta7.tgz
+    version: 0.15.4-beta7
   - apiVersion: v2
     appVersion: 0.15.0
     created: "2026-07-28T08:10:46.819452091Z"
@@ -25334,6 +25432,21 @@ entries:
   resources-profile-generator:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2026-08-06T14:09:20.229327448Z"
+    description: Helm chart to generate resource profile templates in a ConfigMap
+    digest: 28e73145554ba7e9717fb9cc1c82340547fa18d8e62870209581263ceaf194fe
+    maintainers:
+    - name: ffais
+      url: https://github.com/ffais
+    - name: calcagiara
+      url: https://github.com/Calcagiara
+    name: resources-profile-generator
+    type: application
+    urls:
+    - https://github.com/Calcagiara/digitalhub/releases/download/resources-profile-generator-0.2.0/resources-profile-generator-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2026-07-16T13:03:00.077169478Z"
     description: Helm chart to generate resource profile templates in a ConfigMap
     digest: 2d56724eb48da6e718722a8366dd9de234841d6bfef785008e9223b662477a6a
@@ -25347,4 +25460,4 @@ entries:
     urls:
     - https://github.com/Calcagiara/digitalhub/releases/download/resources-profile-generator-0.1.0/resources-profile-generator-0.1.0.tgz
     version: 0.1.0
-generated: "2026-07-28T08:10:46.82071057Z"
+generated: "2026-08-06T14:09:20.23064128Z"
